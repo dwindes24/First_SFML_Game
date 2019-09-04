@@ -29,8 +29,7 @@ void Game::initEnemies()
 	this->enemy1.setPosition(10.f,10.f);
 	this->enemy1.setSize(Vector2f(100.0f, 100.0f));
 	this->enemy1.setFillColor(Color::Cyan);
-	//this->enemy1.setOutlineColor(Color::Green);
-	//this->enemy1.setOutlineThickness(1.f);
+	
 }
 
 void Game::initFonts()
