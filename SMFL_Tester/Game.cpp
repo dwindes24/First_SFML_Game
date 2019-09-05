@@ -148,7 +148,7 @@ void Game::updateEnemies()
 		else
 			this->enemySpawnTimer += 1.f;
 	}
-
+float size;
 	//Now move all enemies downward and delete if neccessary
 	for (int i = 0; i < this->enemies.size(); i++)
 	{
@@ -157,8 +157,32 @@ void Game::updateEnemies()
 		//check if below the screen 
 		if (this->enemies[i].getPosition().y > this->window->getSize().y)
 		{	//delete if below the screen
+
+			size = enemies[i].getSize().x;
+			switch ((int)size)
+			{
+			case 10:
+				this->health -= 1;
+				break;
+			case 30:
+				this->health -= 2;
+				break;
+			case 50:
+				this->health -= 3;
+				break;
+			case 70:
+				this->health -= 4;
+				break;
+			default:
+				this->health -= 5;
+				break;
+
+			}
+
 			this->enemies.erase(this->enemies.begin() + i);
-			this->health -= 1;
+			//this->health -= 1;
+
+
 		}
 	}
 	if (Mouse::isButtonPressed(Mouse::Left))
@@ -168,7 +192,7 @@ void Game::updateEnemies()
 		{
 			this->mouseHeld = true;
 			bool deleted = false;
-			float size;
+			
 			//look thru each enemy
 			for (size_t i = 0; i < this->enemies.size() && deleted == false; i++)
 			{
